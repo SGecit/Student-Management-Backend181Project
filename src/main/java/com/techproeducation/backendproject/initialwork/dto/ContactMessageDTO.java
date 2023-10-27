@@ -38,6 +38,7 @@ public class ContactMessageDTO {
     @Setter(AccessLevel.NONE)
     private LocalDateTime contactDate=LocalDateTime.now();
 
+
     public ContactMessageDTO(ContactMessage contactMessage) {
     this.id=contactMessage.getId();
     this.name=contactMessage.getName();

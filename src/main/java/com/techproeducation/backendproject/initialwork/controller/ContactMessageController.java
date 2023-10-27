@@ -29,6 +29,7 @@ import java.util.Map;
 public class ContactMessageController {
     @Autowired
     private ContactService contactService;
+    //------------------------------------------------------------------------------------------------
     // Save the new contact message
    @PostMapping
   public ResponseEntity<Map<String, String>> createContactMessage(@Valid @RequestBody ContactMessage contactMessage) {
@@ -42,22 +43,21 @@ public class ContactMessageController {
           return new ResponseEntity<>(message, HttpStatus.CREATED); // HTTP status 201 (Created)
       }
 
-
-
+  //------------------------------------------------------------------------------------------------
     //get all contact messages
     @GetMapping
     public ResponseEntity<List<ContactMessage>> getAllContactMessages() {
         List<ContactMessage> messages = contactService.getAllContactMessage();
         return new ResponseEntity<>(messages, HttpStatus.OK);
     }
-
+    //------------------------------------------------------------------------------------------------
     @GetMapping("/query/dto")////http://localhost:8080/contactmessages/query/dto?id=1;
 
     public ResponseEntity<ContactMessageDTO> getContactMessageByDto(@RequestParam("id") Long id){
         ContactMessageDTO contactDto = contactService.getContactMessageByDTO(id);
         return ResponseEntity.ok(contactDto);
     }
-
+    //------------------------------------------------------------------------------------------------
     //get contact messages by page
     @GetMapping("/pagination") // http://localhost:3000/students/pagination?page=0&size=10&sort=name&direction=ASC
     public ResponseEntity<Page<ContactMessage>> getAllMessagesWithPagination(
@@ -70,7 +70,7 @@ public class ContactMessageController {
         Pageable pageable = PageRequest.of(page, size, Sort.by(direction, sort));
         Page<ContactMessage> pageOfStudents = contactService.getAllStudentsWithPagination(pageable);
         return ResponseEntity.ok(pageOfStudents);}
-
+    //------------------------------------------------------------------------------------------------
     //get contact messages by subject
     // @RequestParam: we can get more than one parameter after ? ,@PathVariable: we can get only one parameter
     @GetMapping("/{subject}")
@@ -78,7 +78,7 @@ public class ContactMessageController {
         List<ContactMessage> subject1 = contactService.getContactMessagesBySubject(subject);
         return ResponseEntity.ok(subject1);
     }
-
+    //------------------------------------------------------------------------------------------------
     //get contact messages by email parameter
    @GetMapping("/email")
     public ResponseEntity<List<ContactMessage>> getAllByEmail(@Valid @RequestParam String email) {
@@ -86,6 +86,7 @@ public class ContactMessageController {
 
        return new ResponseEntity<>(getByEmail1, HttpStatus.OK);
     }
+    //------------------------------------------------------------------------------------------------
     //delete by id (path)
     @DeleteMapping("/{id}")
     public ResponseEntity<Map<String,String>> deleteById (@Valid @PathVariable("id") Long id){
@@ -95,6 +96,7 @@ public class ContactMessageController {
         map.put("status","true");
         return ResponseEntity.ok(map);
     }
+    //------------------------------------------------------------------------------------------------
     //delete by id(parameter)
     @DeleteMapping
     public ResponseEntity<Map<String, String>> deleteByRequestParam(@Valid @RequestParam Long id){
@@ -104,9 +106,9 @@ public class ContactMessageController {
         map2.put("status","true");
         return ResponseEntity.ok(map2);
     }
+    //------------------------------------------------------------------------------------------------
 
-
-    //put-update a contact message by id???
+    //update contact message by id
     @PutMapping("/update/{id}")
     public ResponseEntity<Map<String,String>> updateMessageById(@Valid @PathVariable Long id ,@RequestBody ContactMessageDTO contactMessageDTO){
         contactService.updateMessageByIdDTO(id,contactMessageDTO);
@@ -115,25 +117,10 @@ public class ContactMessageController {
         updateMap.put("status","True");
         return ResponseEntity.ok(updateMap);
     }
-
+//------------------------------------------------------------------------------------------------
     //get contact messages by creation date
-//    @GetMapping("/date")
-//    public ResponseEntity<List<ContactMessage>> findByCreationDate(@Valid @RequestParam String startDate, @RequestParam String endDate)
-//    {
-//        LocalDateTime start = LocalDateTime.parse(startDate);
-//        LocalDateTime end = LocalDateTime.parse(endDate);
-//        List<ContactMessage> messages = contactService.findByCreationDate(start, end);
-//        return ResponseEntity.ok(messages);
-//    }
-//    @GetMapping("/date2")
-//    public ResponseEntity<List<ContactMessage>> findByCreationDate2(@RequestParam("startDate")  LocalDateTime startDate, @RequestParam("endDate") LocalDateTime endDate) {
-//        List<ContactMessage> contactMessageList = contactService.findByCreationDate2(startDate, endDate);
-//        return ResponseEntity.ok(contactMessageList);
-
-   // }
-
+//------------------------------------------------------------------------------------------------
     //get contact messages by creation time
-
 
 
 }
