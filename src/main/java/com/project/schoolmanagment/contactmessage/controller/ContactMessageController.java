@@ -30,6 +30,7 @@ public class ContactMessageController {
      *     "message": "this is my message"
      * }
      */
+    
     @PostMapping("/save")
     public ResponseMessage<ContactMessageResponse> save(@RequestBody @Valid ContactMessageRequest contactMessageRequest){
         return contactMessageService.save(contactMessageRequest);
