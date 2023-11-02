@@ -125,7 +125,4 @@ public class ContactMessageController {
     public ResponseEntity<ResponseMessage<ContactMessageResponse>> updateById(@PathVariable Long contactMessageId, @RequestBody @NotNull ContactMessageUpdateRequest contactMessageUpdateRequest){
         return ResponseEntity.ok(contactMessageService.updateById(contactMessageId,contactMessageUpdateRequest));
     }
-
-
-
 }

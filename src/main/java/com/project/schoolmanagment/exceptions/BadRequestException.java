@@ -1,4 +1,4 @@
-package com.project.schoolmanagment.contactmessage.exceptions;
+package com.project.schoolmanagment.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
