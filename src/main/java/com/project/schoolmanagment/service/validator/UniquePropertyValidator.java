@@ -2,6 +2,7 @@ package com.project.schoolmanagment.service.validator;
 
 import com.project.schoolmanagment.entity.concretes.user.User;
 import com.project.schoolmanagment.exceptions.ConflictException;
+import com.project.schoolmanagment.exceptions.ConflictException;
 import com.project.schoolmanagment.payload.messages.ErrorMessages;
 import com.project.schoolmanagment.payload.request.abstracts.AbstractUserRequest;
 import com.project.schoolmanagment.repository.user.UserRepository;
