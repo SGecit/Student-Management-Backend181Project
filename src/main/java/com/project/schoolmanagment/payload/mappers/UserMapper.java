@@ -4,7 +4,7 @@ import com.project.schoolmanagment.entity.concretes.user.User;
 import com.project.schoolmanagment.payload.request.abstracts.BaseUserRequest;
 import com.project.schoolmanagment.payload.response.user.StudentResponse;
 import com.project.schoolmanagment.payload.response.user.TeacherResponse;
-import com.project.schoolmanagment.payload.response.UserResponse;
+import com.project.schoolmanagment.payload.response.user.UserResponse;
 import org.springframework.stereotype.Component;
 
 @Component
